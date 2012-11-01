@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr//dwr20.dtd"> 
+<dwr> 
+	<allow> 
+		<!-- create -->
+		<create creator="spring" javascript="cityInfo">
+			<param name="beanName" value="pcdService"/>
+			<include method="queryProvinceList"/>
+			<include method="queryCityList"/>
+			<include method="queryDistrictList"/>
+		</create>
+		
+		<create creator="spring" javascript="classTemplate">
+			<param name="beanName" value="classTemplateManageService"/>
+			<include method="queryClassLevelList"/>
+			<include method="queryClassDateList"/>
+			<include method="queryClassTimeList"/>
+			<include method="queryFeetypeFromTerm"/>
+			<include method="queryTermsFromTemplate"/>
+			<include method="queryGradeTypesFromTemplate"/> 
+			<include method="queryGradesFromTemplate"/>
+			<include method="queryGradesNewFromTemplate"/>  
+			<include method="querySubjectsFromTemplate"/>
+			<include method="queryClassLevelsFromTemplate"/>
+			<include method="queryBlurryDepartMents"/>
+		</create>
+		<create creator="spring" javascript="newClass">
+			<param name="beanName" value="newClassManageService"/>
+			<include method="queryServiceCentersByAreaId"/>
+			<include method="queryVenuesByServiceCenterId"/>
+			<include method="queryClassRoomsByVenueId"/>
+			<include method="queryTeachersByName"/>		
+			<include method="queryClassTeachersByName"/>		
+	    </create>
+	    <create creator="spring" javascript="linkageMenu">
+	    	<param name="beanName" value="multipleLevelsLinkageService"/>
+	    	<include method="queryLinkageSelect" />
+	    	<include method="queryLinkageSelectASV"/>
+	    	<include method="queryLinkageSelectASVC"/>
+	    </create>
+	    <create creator="spring" javascript="studentInfo">
+	    	<param name="beanName" value="studentService"/>
+	    	<include method="queryStudentName" />
+	    	<include method="queryAllSourceToDwr"/>
+	    </create>
+		<create creator="spring" javascript="xesClass">
+			<param name="beanName" value="classService"/>
+			<include method="queryTermsFromClass"/>	
+			<include method="queryGradeTypesFromClass"/>
+			<include method="queryGradesFromClass"/>
+			<include method="querySubjectsFromClass"/>
+			<include method="queryClassLevelsFromClass"/>
+			<include method="queryServiceCentersFromClass"/>
+			<include method="queryVenuesFromClass"/>
+			<include method="queryGradesFromClassWithoutGt"/>
+			<include method="querySubjectsFromClassWithoutGt"/>
+			<include method="queryClassLevelsFromClassWithoutGt"/>
+			<include method="queryVenuesFromClassWithoutArea"/>
+			<include method="queryClassRoomsFromClassWithoutArea"/>
+			<include method="queryClassTimeList"/>
+			<include method="queryClassLevelsByMultiSubjects"/> 
+			<include method="queryClassLevelsByOneClassMultiSubjects"/>
+			<include method="queryServiceCenters"/>
+			<include method="queryVenues"/>
+			<include method="queryClassRooms"/>
+	    </create>		        
+	    <create javascript="classExportLink" creator="spring">
+	    	<param name="beanName" value="classExportService"></param>
+	    	<include method="queryLinkClassRooms"/>
+	    	<include method="queryLinkServCenters"/>
+	    	<include method="queryLinkVenues"/>
+	    	<include method="queryLinkServiceCenters"/>
+	    </create>
+	     <create javascript="consultTypeLink" creator="spring">
+	    	<param name="beanName" value="consultTypeService"></param>
+	    	<include method="queryConsultTypeList"/>
+	    </create>
+	     <create javascript="exampaperValidation" creator="spring">
+	    	<param name="beanName" value="examPaperService"></param>
+	    	<include method="validatePaper"/>
+	    </create>
+	    <create javascript="competitionExampaperValidation" creator="spring">
+	    	<param name="beanName" value="competitionExamPaperService"></param>
+	    	<include method="competitionValidatePaper"/>
+	    </create>
+	    <create javascript="queryChannelsAndLinkman" creator="spring">
+	    	<param name="beanName" value="studycardService"></param>
+	    	<include method="queryLinkmanOfChannels"/>
+	    	<include method="queryChannelsByCity"/>
+	    </create>
+	    <create javascript="competitionQueryLinkage" creator="spring">
+	    	<param name="beanName" value="competitionExamPaperService"></param>
+	    	<include method="queryYearListForLinkage"/>
+	    	<include method="queryTermListForLinkage"/>
+	    	<include method="queryGradeTypeForLinkage"/>
+	    	<include method="queryGradeForLinkage"/>
+	    	<include method="querySubjectForLinkage"/>
+	    </create>
+		<create creator="spring" javascript="teacherAdminService">
+			<param name="beanName" value="teacherAdminService"/>
+			<include method="queryTeacherByName"/>
+	    </create>
+		<convert converter="bean" match="com.oa.employee.system.domain.Province">
+			<param name="include" value="id,name" />
+		</convert>
+		<convert converter="bean" match="com.oa.employee.system.domain.City">
+			<param name="include" value="id,name" />
+		</convert>
+		<convert converter="bean" match="com.oa.employee.system.domain.District">
+			<param name="include" value="id,name" />
+		</convert>
+	
+		<convert converter="bean" match="com.oa.employee.xesclass.bean.ObjectBean">
+			<param name="include" value="id,name" />
+		</convert>	
+		<convert converter="bean" match="com.oa.employee.xesclass.domain.SelectObject">
+			<param name="include" value="id,name"/>
+		</convert>
+		<convert converter="bean" match="com.oa.employee.student.domain.Source">
+			<param name="include" value="id,name"/>
+		</convert>	
+		<convert converter="bean" match="com.oa.employee.permissions.domain.Department">
+			<param name="include" value="id,name"/>
+		</convert>
+		<convert converter="bean" match="com.oa.employee.xesclass.domain.Term">
+			<param name="include" value="id,name"/>
+		</convert>
+		<convert converter="bean" match="com.oa.employee.xesclass.domain.GradeType">
+			<param name="include" value="id,gtName"/>
+		</convert>
+		<convert converter="bean" match="com.oa.employee.xesclass.domain.Grade">
+			<param name="include" value="id,name"/>
+		</convert>
+		<convert converter="bean" match="com.oa.employee.xesclass.domain.Subject">
+			<param name="include" value="id,subjName"/>
+		</convert>
+	</allow>
+</dwr>
