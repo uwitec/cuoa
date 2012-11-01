@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="oa_ee"
+  id="myeclipse.1254017255298"
+  context-root="/oa_ee"
+  j2ee-spec="5.0"
+  archive="oa_ee.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebApps" />
+  </attributes>
+</project-module>
+
