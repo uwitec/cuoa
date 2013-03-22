@@ -35,3 +35,6 @@ $(document).ready(function(){
 </script>
 <script src="<%=contextPath %>/js/attend.js" type="text/javascript"></script>
 <script src="<%=contextPath %>/js/jquery-extends.js" type="text/javascript"></script>
+
+<link href="<%=contextPath %>/js/jquery/jquery.alerts-1.1/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="<%=contextPath %>/js/jquery/jquery.alerts-1.1/thickbox.css" rel="stylesheet" type="text/css" media="screen" />
