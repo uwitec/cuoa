@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" namespace="/" extends="json-default">
+		<interceptors>
+			<interceptor name="securityAccess"
+				class="com.oa.framework.struts.interceptor.SecurityAccessInterceptor" />
+			<interceptor name="loginAuthorizationInterceptor"
+				class="com.oa.global.interceptor.LoginAuthorizationInterceptor" />
+			<interceptor name="replaceInValidCharInterceptor"
+				class="com.oa.global.interceptor.ReplaceInvalidCharInterceptor" />
+			<interceptor name="permissionsValidateInterceptor"
+				class="com.oa.global.interceptor.PermissionsValidateInterceptor" />
+			<interceptor name="asynchronousTokenInterceptor" class="com.oa.global.interceptor.AsynchronousTokenInterceptor" >
+				<param name="includeMethods">
+					addClassrooms,selectClassAndStudentToRegist
+				</param>
+			</interceptor>
+			<interceptor-stack name="oaStack">
+			    <!--<interceptor-ref name="replaceInValidCharInterceptor"/>-->
+				<interceptor-ref name="loginAuthorizationInterceptor" />
+				<interceptor-ref name="permissionsValidateInterceptor" />
+				<!-- <interceptor-ref name="securityAccess" /> -->
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="fileUpload" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">
+						dojo\..*,^struts\..*
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="oaStack" />
+		<global-results>
+			<result name="exportExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">uploadStream</param>
+				<param name="bufferSize">1024</param>
+				<param name="contentDisposition">attachment;filename=${fileName}</param>
+			</result>
+			<result name="message">/jsp/message/message.jsp</result>
+			<result name="noPermissionResult">
+				/jsp/message/error.jsp
+			</result>
+			<result name="jsonResult" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="noPermissionAjaxResult" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="reLoginAjaxResult" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="reLoginResult" type="redirect">
+				/loginManage!toLogin.action
+			</result>
+			<result name="error" type="dispatcher">
+				<param name="location">/jsp/message/error.jsp</param>
+			</result>
+			<result name="success" type="redirect">
+				<param name="location">/index.jsp</param>
+			</result>
+			<result name="exception" type="dispatcher">
+				<param name="location">/jsp/message/error.jsp</param>
+			</result>
+			<result name="input" type="dispatcher">
+				<param name="location">/jsp/message/error.jsp</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">
+					/loginManage!toLogin.action
+				</param>
+			</result>
+			<result name="invalid.token" type="redirect">
+				<param name="location">/jsp/message/message.jsp</param>
+			</result>
+		</global-results>
+		<!-- 
+			<global-exception-mappings>
+			<exception-mapping name="exception" exception="java.lang.Exception"
+			result="exception" />
+			</global-exception-mappings>
+		-->
+	</package>
+	<include file="/config/struts/struts-basis-actions.xml" />
+	<include file="/config/struts/struts-finance-actions.xml" />
+	<include file="/config/struts/struts-login-actions.xml" />
+	<include file="/config/struts/struts-permissions-actions.xml" />
+	<include file="/config/struts/struts-purchase-actions.xml" />
+	<include file="/config/struts/struts-sales-actions.xml" />
+	<include file="/config/struts/struts-worklog-actions.xml" />
+</struts>
