@@ -11,7 +11,7 @@
 	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
 	<bean id="master" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName"><value>java:comp/env/master</value></property>
+		<property name="jndiName"><value>java:comp/env/oamaster</value></property>
 	</bean>
 
 	<bean id="dataSource" class="com.oa.global.routingDataSource.DynamicDataSource">  
