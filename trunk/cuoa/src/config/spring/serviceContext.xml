@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true" >
+
+	
+	<!-- 声明读写Dao(Master) -->
+	<bean id="globalDao" class="com.oa.framework.dao.DbDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+
+	<bean id="loginManageService" class="com.oa.employee.permissions.service.LoginManageServiceImpl">
+		<property name="dao" ref="globalDao"/>
+	</bean>
+	
+	<bean id="employeeManageService" class="com.oa.employee.permissions.service.EmployeeManageServiceImpl">
+		<property name="dao" ref="globalDao"/>
+	</bean>
+	
+	<bean id="permissionManageService" class="com.oa.employee.permissions.service.PermissionManageServiceImpl">
+		<property name="dao" ref="globalDao"/>
+	</bean>
+	
+	<bean id="worklogManageService" class="com.oa.employee.worklog.service.WorklogManageServiceImpl">
+		<property name="dao" ref="globalDao"/>
+	</bean>
+</beans>

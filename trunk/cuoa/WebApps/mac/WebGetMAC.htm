@@ -1,0 +1,14 @@
+<HTML>
+<head>
+ <title>获取本机网卡地址</title>
+ <OBJECT classid="clsid:C8FF0971-7934-4BF5-A4C9-852DE49E905E" codebase="WebGetMAC.inf" align="middle" name="MACSVR"> 
+ </OBJECT>
+</head>
+<body>
+
+ <input type="text" id="clientpcmac" name="clientpcmac" value=""></input>
+</body>
+</HTML>
+<SCRIPT LANGUAGE="JScript">
+	document.getElementById("clientpcmac").value=MACSVR.MAC;
+</SCRIPT>

@@ -1,0 +1,8 @@
+[Add.Code]
+WebGetMAC.ocx=WebGetMAC.ocx
+
+[WebGetMAC.ocx]
+file=WebGetMAC.cab
+clsid={C8FF0971-7934-4BF5-A4C9-852DE49E905E}
+RegisterServer=yes
+FileVersion=1,0,1,0

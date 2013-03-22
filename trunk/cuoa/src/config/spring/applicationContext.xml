@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- 指定Spring配置文件的Schema信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="master" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName"><value>java:comp/env/master</value></property>
+	</bean>
+
+	<bean id="dataSource" class="com.oa.global.routingDataSource.DynamicDataSource">  
+       <property name="targetDataSources">  
+          <map key-type="java.lang.String">  
+             <entry key="master" value-ref="master"/>
+          </map>  
+       </property>
+       <property name="defaultTargetDataSource" ref="master"/>  
+    </bean>
+    
+  <!-- 定义Hibernate的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 依赖注入数据源，注入正是上面定义的dataSource -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- mappingResouces属性用来列出全部映射文件 -->
+		<property name="mappingDirectoryLocations">
+		
+			<!-- 使用spring的mappingDirectoryLocations属性,来定义hibernate映射文件
+				可以直接指定一个目录-->
+			<list>
+			<!-- 此处写具体hbm文件或用aj表达式统一引入 -->
+				<value>classpath*:/com/oa/employee/basis/domain/</value>
+				<value>classpath*:/com/oa/employee/finance/domain/</value>
+				<value>classpath*:/com/oa/employee/permissions/domain/</value>
+				<value>classpath*:/com/oa/employee/purchase/domain/</value>
+				<value>classpath*:/com/oa/employee/sales/domain/</value>
+				<value>classpath*:/com/oa/employee/worklog/domain/</value>
+			</list>
+		</property>
+		<!-- 定义Hibernate的SessionFactory的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<!-- 指定数据库方言 -->
+				<prop key="hibernate.dialect">
+					<!--
+					使用默认的mysql方言:org.hibernate.dialect.MySQLInnoDBDialect
+					-->
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+				<!-- 是否根据需要每次自动创建数据库 -->
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<!-- 显示Hibernate持久化操作所生成的SQL -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- 将SQL脚本进行格式化后再输出 -->
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache" >false</prop>
+        		<prop key="hibernate.cache.use_query_cache" >false</prop>
+				
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 配置一下事务的传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" rollback-for="Exception"  propagation="REQUIRED"/>
+			<tx:method name="modify*" rollback-for="Exception"  propagation="REQUIRED"/>
+			<tx:method name="remove*" rollback-for="Exception"  propagation="REQUIRED"/>
+			<tx:method name="login*" rollback-for="Exception"  propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<!-- 配置一个切入点，匹配com.oa.xesBusinessSystem下所有模块的service包下所有方法-->
+        <aop:pointcut id="allMethod" expression="execution(* com.oa.employee.*.service.*.add*(..))||execution(* com.oa.employee.*.service.*.modify*(..))||execution(* com.oa.employee.*.service.*.remove*(..))||execution(* com.oa.employee.*.service.*.login*(..))"/>
+		<!-- 指定在lutherPointcut切入点应用txAdvice事务切面 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allMethod"/>
+	</aop:config>
+	<import resource="serviceContext.xml"/>
+</beans>
