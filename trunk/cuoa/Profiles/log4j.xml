@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE log4j:configuration PUBLIC "-//Apache Software Foundation//Log4j Configuration DTD 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <appender class="org.apache.log4j.DailyRollingFileAppender" name="rollingFile">
+    <param name="DatePattern" value=".yyyy-MM-dd"/>
+    <param name="File" value="${catalina.home}/webapps/oa_ee/logs/log.log"/>
+    <!-- 
+    <param name="File" value="D:/eclipse/workspace/employee/WebRoot/logs/log.log"/>
+     -->
+    <param name="Encoding" value="GBK"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p %-5c{3}:%L %X{client} -&gt; %m%n"/>
+    </layout>
+  </appender>
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.out"/>
+    <param name="Threshold" value="info"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p %-5c{3}:%L %X{client} -&gt; %m%n"/>
+    </layout>
+  </appender>
+	<logger name="com.oa.framework">
+		<level value="INFO" />
+	</logger>
+	<logger name="com.oa.global">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.hibernate.SQL">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.springframework">
+		<level value="INFO"/>
+	</logger>
+	<logger name="com.oa.employee">
+	    <level value="INFO"/>
+	</logger>
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="rollingFile" />
+		<appender-ref ref="CONSOLE"/>
+	</root>
+</log4j:configuration>
