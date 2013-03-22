@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Str!--uts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 工作管理模块 -->
+	<package name="worklog" namespace="/worklog" extends="default">
+		<action name="worklogManage" class="com.oa.employee.worklog.actions.WorklogManageAction">
+			<result name="index">/jsp/employee/worklog/worklogIndex.jsp</result>
+			<result name="worklogPage">/jsp/employee/worklog/worklogPage.jsp</result>
+			<result name="jsonSuccess" type="json">
+		    	<param name="root">result</param>
+		    </result>
+		    <result name="jsonError" type="json">
+		    	<param name="root">result</param>
+		    </result>
+		 </action>
+	</package>
+</struts>
