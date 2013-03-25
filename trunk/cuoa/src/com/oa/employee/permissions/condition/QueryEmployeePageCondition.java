@@ -3,7 +3,8 @@ package com.oa.employee.permissions.condition;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 
-import com.oa.framework.paginaction.Condition;
+import com.oa.framework.condition.Condition;
+
 
 public class QueryEmployeePageCondition extends Condition {
 

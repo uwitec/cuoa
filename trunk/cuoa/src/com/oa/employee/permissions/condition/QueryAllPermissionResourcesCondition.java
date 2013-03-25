@@ -1,6 +1,9 @@
 package com.oa.employee.permissions.condition;
 
-import com.oa.framework.paginaction.Condition;
+import org.hibernate.Query;
+
+import com.oa.framework.condition.Condition;
+
 
 public class QueryAllPermissionResourcesCondition extends Condition {
 
@@ -9,5 +12,10 @@ public class QueryAllPermissionResourcesCondition extends Condition {
 	@Override
 	public String getInitialHql() {
 		return "select res from Resource res where res.deleted=0";
+	}
+
+	@Override
+	public Query preparedParams(Query query) {
+		return query;
 	}
 }

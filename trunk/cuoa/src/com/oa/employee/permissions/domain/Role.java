@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 /**
- * ½ÇÉ«±í
+ * è§’è‰²è¡¨
  */
 
 public class Role  implements java.io.Serializable {
@@ -17,12 +17,12 @@ public class Role  implements java.io.Serializable {
      private Integer deleted;
      private String createrId;
      /**
-      * ´´½¨ÈË
+      * åˆ›å»ºäºº
      */
      private Employee creater;
      private String modifierId;
      /**
-      * ×îºóĞŞ¸ÄÈËID
+      * æœ€åä¿®æ”¹äººID
      */
      private Employee modifier;
      private Date createDate;
@@ -89,7 +89,7 @@ public class Role  implements java.io.Serializable {
         this.createrId = createrId;
     }
     /**       
-     *      * ´´½¨ÈË
+     *      * åˆ›å»ºäºº
      */
 
     public Employee getCreater() {
@@ -108,7 +108,7 @@ public class Role  implements java.io.Serializable {
         this.modifierId = modifierId;
     }
     /**       
-     *      * ×îºóĞŞ¸ÄÈËID
+     *      * æœ€åä¿®æ”¹äººID
      */
 
     public Employee getModifier() {

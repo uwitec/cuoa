@@ -3,8 +3,7 @@ package com.oa.employee.worklog.condition;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 
-import com.oa.framework.paginaction.Condition;
-
+import com.oa.framework.condition.Condition;
 public class QueryWorklogPageCondition extends Condition {
 	private static final long serialVersionUID = 1470255285262805463L;
 	private String caption;

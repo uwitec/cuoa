@@ -30,7 +30,7 @@ public class WorklogManageAction extends AbstractAction {
 			condition = new QueryWorklogPageCondition();
 		}
 		try {
-			currentPage = worklogManageService.queryWorklogList(condition);
+			page = worklogManageService.queryWorklogList(condition);
 			return "worklogPage";
 		} catch (Exception ex) {
 			ex.printStackTrace();

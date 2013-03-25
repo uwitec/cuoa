@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 
-import com.oa.framework.paginaction.Condition;
+import com.oa.framework.condition.Condition;
 import com.oa.framework.utils.string.StringUtil;
 
 public class ModifyPermissionsCondition extends Condition {

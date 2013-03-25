@@ -1,21 +1,22 @@
 package com.oa.employee.worklog.service;
 
 import com.oa.employee.worklog.domain.Worklog;
-import com.oa.framework.dao.IDbDao;
-import com.oa.framework.paginaction.Condition;
-import com.oa.framework.paginaction.Page;
+import com.oa.framework.condition.Condition;
+import com.oa.framework.dao.IBaseDao;
+import com.oa.framework.struts.Page;
 
 public class WorklogManageServiceImpl implements IWorklogManageService {
-	private IDbDao dao;
+	private IBaseDao dao;
 	@Override
 	public Page<Worklog> queryWorklogList(Condition condition) {
-		condition.setOrderByItem("worklog.modifyDate desc");
-		return dao.pagedQuery(condition);
+		condition.setSortname("worklog.modifyDate");
+		condition.setSortorder("desc");
+		return dao.queryPage(condition);
 	}
-	public IDbDao getDao() {
+	public IBaseDao getDao() {
 		return dao;
 	}
-	public void setDao(IDbDao dao) {
+	public void setDao(IBaseDao dao) {
 		this.dao = dao;
 	}
 }

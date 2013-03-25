@@ -2,7 +2,7 @@ package com.oa.employee.permissions.condition;
 
 import org.hibernate.Query;
 
-import com.oa.framework.paginaction.Condition;
+import com.oa.framework.condition.Condition;
 
 public class QueryPersonalPermissionsCondition extends Condition {
 

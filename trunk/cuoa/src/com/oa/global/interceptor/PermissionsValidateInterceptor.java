@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.oa.employee.permissions.domain.Resource;
 import com.oa.framework.struts.AbstractAction;
-import com.oa.global.domain.Result;
+import com.oa.framework.struts.Result;
 
 public class PermissionsValidateInterceptor extends AbstractInterceptor {
 	private static final long serialVersionUID = 8187716580877813175L;
@@ -54,7 +54,7 @@ public class PermissionsValidateInterceptor extends AbstractInterceptor {
 							if(request.getHeader("x-requested-with")!= null  
 			                && request.getHeader("x-requested-with")   
 			                        .equalsIgnoreCase("XMLHttpRequest")) {
-								action.setResult(new Result(false,"您无权访问此页面!",""));
+								action.setResult(new Result(false,"您无权访问此页面!"));
 								return "noPermissionAjaxResult";
 							}else{
 								action.addActionError("您无权访问此页面!");
