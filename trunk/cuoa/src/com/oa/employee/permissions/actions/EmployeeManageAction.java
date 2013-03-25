@@ -29,11 +29,11 @@ public class EmployeeManageAction extends AbstractAction {
 	* @version 2011-8-24 下午01:38:14
 	* @tag 查询员工
 	 */
-	public String queryEmployeePage() {
+	public String data() {
 		if (condition == null) {
 			condition = new QueryEmployeePageCondition();
 		}
-		currentPage = employeeManageService.queryEmployeePage(condition);
+		page = employeeManageService.queryEmployeePage(condition);
 		return "employeePage";
 	}
 

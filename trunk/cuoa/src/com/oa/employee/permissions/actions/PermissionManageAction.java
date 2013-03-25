@@ -8,7 +8,7 @@ import com.oa.employee.permissions.domain.Employee;
 import com.oa.employee.permissions.domain.Role;
 import com.oa.employee.permissions.service.IPermissionManageService;
 import com.oa.framework.struts.AbstractAction;
-import com.oa.global.domain.Result;
+import com.oa.framework.struts.Result;
 /**
  * @author yjn
  */
@@ -40,7 +40,7 @@ public class PermissionManageAction extends AbstractAction {
 			condition = new QueryRolePageCondition();
 		}
 		try {
-			currentPage = permissionManageService.queryRolePage(condition);
+			page = permissionManageService.queryRolePage(condition);
 			return "rolePage";
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -68,13 +68,13 @@ public class PermissionManageAction extends AbstractAction {
 		try {
 			String returnMessage = permissionManageService.addRole(role, employee);
 			if (StringUtils.isBlank(returnMessage)) {
-				result = new Result(Boolean.TRUE, "新增角色成功", "");
+				result = new Result(Boolean.TRUE, "新增角色成功");
 				return "jsonSuccess";
 			}
-			result = new Result(Boolean.FALSE, returnMessage, "");
+			result = new Result(Boolean.FALSE, returnMessage);
 			return "jsonError";
 		} catch (Exception ex) {
-			result = new Result(Boolean.FALSE, ex.getMessage(), "");
+			result = new Result(Boolean.FALSE, ex.getMessage());
 			return "jsonError";
 		}
 	}
@@ -109,13 +109,13 @@ public class PermissionManageAction extends AbstractAction {
 		try {
 			String returnMessage = permissionManageService.modifyRole(role, employee);
 			if (StringUtils.isBlank(returnMessage)) {
-				result = new Result(Boolean.TRUE, "修改角色成功", "");
+				result = new Result(Boolean.TRUE, "修改角色成功");
 				return "jsonSuccess";
 			}
-			result = new Result(Boolean.FALSE, returnMessage, "");
+			result = new Result(Boolean.FALSE, returnMessage);
 			return "jsonError";
 		} catch (Exception ex) {
-			result = new Result(Boolean.FALSE, ex.getMessage(), "");
+			result = new Result(Boolean.FALSE, ex.getMessage());
 			return "jsonError";
 		}
 	}
@@ -171,7 +171,7 @@ public class PermissionManageAction extends AbstractAction {
 	public void setCondition(QueryRolePageCondition condition) {
 		this.condition = condition;
 	}
-
+	
 	public Role getRole() {
 		return role;
 	}
