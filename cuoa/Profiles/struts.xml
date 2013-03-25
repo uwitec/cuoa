@@ -65,41 +65,22 @@
 				<param name="bufferSize">1024</param>
 				<param name="contentDisposition">attachment;filename=${fileName}</param>
 			</result>
-			<result name="message">/jsp/message/message.jsp</result>
-			<result name="noPermissionResult">
-				/jsp/message/error.jsp
-			</result>
-			<result name="jsonResult" type="json">
+			<result name="json-result" type="json"><param name="root">result</param></result>
+			<result name="json-page" type="json"><param name="root">page</param></result>
+			<result name="json-list" type="json"><param name="root">list</param></result>
+			<result name="error" type="dispatcher"><param name="location">/jsp/common/error.jsp</param></result>
+			<result name="to-import" type="dispatcher"><param name="location">/jsp/common/import.jsp</param></result>
+			<result name="to-import-log" type="dispatcher"><param name="location">/jsp/common/import-log.jsp</param></result>
+			<result name="to-revise" type="dispatcher">/jsp/common/edit-revise.jsp</result> 
+			<result name="to-search-reviselog" type="dispatcher">/jsp/common/edit-revise-log.jsp</result>
+			<result name="noPermissionResult">/jsp/common/error.jsp</result>
+			<result name="noPermissionAjaxResult" type="json"><param name="root">result</param></result>
+			<result name="message">/jsp/common/message.jsp</result>
+			<result name="loginAjaxResult" type="json">
 				<param name="root">result</param>
 			</result>
-			<result name="noPermissionAjaxResult" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="reLoginAjaxResult" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="reLoginResult" type="redirect">
-				/loginManage!toLogin.action
-			</result>
-			<result name="error" type="dispatcher">
-				<param name="location">/jsp/message/error.jsp</param>
-			</result>
-			<result name="success" type="redirect">
-				<param name="location">/index.jsp</param>
-			</result>
-			<result name="exception" type="dispatcher">
-				<param name="location">/jsp/message/error.jsp</param>
-			</result>
-			<result name="input" type="dispatcher">
-				<param name="location">/jsp/message/error.jsp</param>
-			</result>
-			<result name="login" type="redirect">
-				<param name="location">
-					/loginManage!toLogin.action
-				</param>
-			</result>
-			<result name="invalid.token" type="redirect">
-				<param name="location">/jsp/message/message.jsp</param>
+			<result name="loginResult" type="redirect">
+				/login!index.action
 			</result>
 		</global-results>
 		<!-- 
@@ -116,4 +97,5 @@
 	<include file="/config/struts/struts-purchase-actions.xml" />
 	<include file="/config/struts/struts-sales-actions.xml" />
 	<include file="/config/struts/struts-worklog-actions.xml" />
+	<include file="/config/struts/struts-common-actions.xml" />
 </struts>
