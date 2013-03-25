@@ -7,6 +7,7 @@ import com.oa.employee.permissions.domain.Employee;
 import com.oa.employee.permissions.domain.Resource;
 import com.oa.employee.permissions.service.ILoginManageService;
 import com.oa.framework.struts.AbstractAction;
+import com.oa.framework.utils.treemenu.TreeMenu;
 import com.opensymphony.xwork2.ActionContext;
 /**
  * @author yjn
@@ -18,6 +19,7 @@ public class LoginManageAction extends AbstractAction {
 	private ILoginManageService loginManageService;
 	private Employee employee;
 	private String returnMessage;
+	private String personalMenuPermissionsJson;
 	/**
 	* @author yjn
 	* @version 2011-8-23 上午08:57:44
@@ -74,7 +76,10 @@ public class LoginManageAction extends AbstractAction {
 		
 		//设置 session
 		this.set("allPersonalPermissions", permissions.get("allPersonalPermissions"));
-		this.set("personalMenuPermissions", permissions.get("personalMenuPermissions"));
+		
+		List<Resource> personalMenuPermissions = permissions.get("personalMenuPermissions");
+		personalMenuPermissionsJson = TreeMenu.getTreeMenuJson(personalMenuPermissions);
+	//	this.set("personalMenuPermissions", permissions.get("personalMenuPermissions"));
 		return "index";
 	}
 
@@ -110,5 +115,13 @@ public class LoginManageAction extends AbstractAction {
 
 	public void setReturnMessage(String returnMessage) {
 		this.returnMessage = returnMessage;
+	}
+
+	public String getPersonalMenuPermissionsJson() {
+		return personalMenuPermissionsJson;
+	}
+
+	public void setPersonalMenuPermissionsJson(String personalMenuPermissionsJson) {
+		this.personalMenuPermissionsJson = personalMenuPermissionsJson;
 	}
 }
