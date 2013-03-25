@@ -1,8 +1,8 @@
 package com.oa.employee.worklog.service;
 
 import com.oa.employee.worklog.domain.Worklog;
-import com.oa.framework.paginaction.Condition;
-import com.oa.framework.paginaction.Page;
+import com.oa.framework.condition.Condition;
+import com.oa.framework.struts.Page;
 
 public interface IWorklogManageService {
 

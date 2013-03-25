@@ -3,7 +3,7 @@ package com.oa.employee.permissions.condition;
 import org.hibernate.Query;
 
 import com.oa.employee.permissions.domain.Employee;
-import com.oa.framework.paginaction.Condition;
+import com.oa.framework.condition.Condition;
 import com.oa.framework.utils.string.MD5;
 
 @SuppressWarnings("serial")

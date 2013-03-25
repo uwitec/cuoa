@@ -3,7 +3,7 @@ package com.oa.employee.permissions.domain;
 
 
 /**
- * ½ÇÉ«£­È¨ÏŞ×ÊÔ´ ¹ØÏµ±í
+ * è§’è‰²ï¼æƒé™èµ„æº å…³ç³»è¡¨
  */
 
 public class RoleResource  implements java.io.Serializable {
@@ -19,7 +19,7 @@ public class RoleResource  implements java.io.Serializable {
      private Role role;
      private String resourceId;
      /**
-      * È¨ÏŞ×ÊÔ´
+      * æƒé™èµ„æº
      */
      private Resource resource;
 
@@ -82,7 +82,7 @@ public class RoleResource  implements java.io.Serializable {
         this.resourceId = resourceId;
     }
     /**       
-     *      * È¨ÏŞ×ÊÔ´
+     *      * æƒé™èµ„æº
      */
 
     public Resource getResource() {

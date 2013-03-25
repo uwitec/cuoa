@@ -1,8 +1,8 @@
 package com.oa.employee.permissions.service;
 
 import com.oa.employee.permissions.domain.Employee;
-import com.oa.framework.paginaction.Condition;
-import com.oa.framework.paginaction.Page;
+import com.oa.framework.condition.Condition;
+import com.oa.framework.struts.Page;
 
 public interface IEmployeeManageService {
 	

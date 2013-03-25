@@ -9,22 +9,23 @@ import com.oa.employee.permissions.condition.QueryResourcesOfCurrentRoleConditio
 import com.oa.employee.permissions.domain.Employee;
 import com.oa.employee.permissions.domain.Resource;
 import com.oa.employee.permissions.domain.Role;
-import com.oa.framework.dao.IDbDao;
-import com.oa.framework.paginaction.Condition;
-import com.oa.framework.paginaction.Page;
+import com.oa.framework.condition.Condition;
+import com.oa.framework.dao.IBaseDao;
+import com.oa.framework.struts.Page;
 
 public class PermissionManageServiceImpl implements IPermissionManageService {
-	private IDbDao dao;
+	private IBaseDao dao;
 	
 	@Override
 	public Page<Role> queryRolePage(Condition condition) {
-		condition.setOrderByItem("role.createDate desc");
-		return dao.pagedQuery(condition);
+		condition.setSortname("role.createDate");
+		condition.setSortorder("desc");
+		return dao.queryPage(condition);
 	}
 	
 	@Override
 	public String addRole(Role role, Employee employee) throws Exception {
-		if (dao.CheckObjectColumn(role, new String[] {"name", "deleted"}, null).equals("y")) {
+		if (dao.CheckObjectColumnNotDeleted(role, new String[] {"name"}, null, "deleted").equals("y")) {
 			return "您输入的角色名已存在，请重新输入";
 		}
 		Date date = new Date();
@@ -33,7 +34,7 @@ public class PermissionManageServiceImpl implements IPermissionManageService {
 		role.setCreaterId(employee.getId());
 		role.setModifierId(employee.getId());
 		role.setDeleted(0);
-		dao.addObjectBackPK_(role);
+		dao.addObject(role);
 		return null;
 	}
 	
@@ -43,13 +44,13 @@ public class PermissionManageServiceImpl implements IPermissionManageService {
 		if (role.getName().equals(originalRole.getName())) {
 			return "您输入的角色名与原角色名一致，请重新输入";
 		}
-		if (dao.CheckObjectColumn(role, new String[] {"name", "deleted"}, null).equals("y")) {
+		if (dao.CheckObjectColumnNotDeleted(role, new String[] {"name"}, null, "deleted").equals("y")) {
 			return "您输入的角色名已存在，请重新输入";
 		}
 		originalRole.setModifierId(employee.getId());
 		originalRole.setModifyDate(new Date());
 		originalRole.setName(role.getName());
-		dao.update(originalRole);
+		dao.updateObject(originalRole);
 		return null;
 	}
 	
@@ -100,19 +101,20 @@ public class PermissionManageServiceImpl implements IPermissionManageService {
 		modifyPermissionsCondition.setRoleId(role.getId());
 		//删除原权限资源
 		modifyPermissionsCondition.setOperateType("delete");
-		dao.update(modifyPermissionsCondition);
+		dao.updateOrDeleteAll(modifyPermissionsCondition);
 		//添加新权限资源
 		if (modifyPermissionsCondition.getResourceIds().split(",").length > 0) {
 			modifyPermissionsCondition.setOperateType("add");
-			dao.update(modifyPermissionsCondition);
+			dao.updateOrDeleteAll(modifyPermissionsCondition);
 		}
 		return null;
 	}
-	
-	public IDbDao getDao() {
+
+	public IBaseDao getDao() {
 		return dao;
 	}
-	public void setDao(IDbDao dao) {
+
+	public void setDao(IBaseDao dao) {
 		this.dao = dao;
 	}
 }

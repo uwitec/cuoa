@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.oa.framework.struts.AbstractAction;
-import com.oa.global.domain.Result;
+import com.oa.framework.struts.Result;
 import com.oa.global.routingDataSource.changecity.CustomerContextForCity;
 
 

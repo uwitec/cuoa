@@ -10,10 +10,10 @@ import com.oa.employee.permissions.condition.QueryAllPermissionResourcesConditio
 import com.oa.employee.permissions.condition.QueryPersonalPermissionsCondition;
 import com.oa.employee.permissions.domain.Employee;
 import com.oa.employee.permissions.domain.Resource;
-import com.oa.framework.dao.IDbDao;
+import com.oa.framework.dao.IBaseDao;
 
 public class LoginManageServiceImpl implements ILoginManageService {
-	private IDbDao dao;
+	private IBaseDao dao;
 	@Override
 	public Employee queryLogin(Employee employee) {
 		LoginValidateCondition condition = new LoginValidateCondition();
@@ -57,10 +57,12 @@ public class LoginManageServiceImpl implements ILoginManageService {
 		return resultMap;
 	}
 
-	public IDbDao getDao() {
+	public IBaseDao getDao() {
 		return dao;
 	}
-	public void setDao(IDbDao dao) {
+
+	public void setDao(IBaseDao dao) {
 		this.dao = dao;
 	}
+
 }

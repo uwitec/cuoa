@@ -4,25 +4,25 @@
 
 	
 	<!-- 声明读写Dao(Master) -->
-	<bean id="globalDao" class="com.oa.framework.dao.DbDaoImpl">
+	<bean id="baseDao" class="com.oa.framework.dao.BaseDaoImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
 
 	<bean id="loginManageService" class="com.oa.employee.permissions.service.LoginManageServiceImpl">
-		<property name="dao" ref="globalDao"/>
+		<property name="dao" ref="baseDao"/>
 	</bean>
 	
 	<bean id="employeeManageService" class="com.oa.employee.permissions.service.EmployeeManageServiceImpl">
-		<property name="dao" ref="globalDao"/>
+		<property name="dao" ref="baseDao"/>
 	</bean>
 	
 	<bean id="permissionManageService" class="com.oa.employee.permissions.service.PermissionManageServiceImpl">
-		<property name="dao" ref="globalDao"/>
+		<property name="dao" ref="baseDao"/>
 	</bean>
 	
 	<bean id="worklogManageService" class="com.oa.employee.worklog.service.WorklogManageServiceImpl">
-		<property name="dao" ref="globalDao"/>
+		<property name="dao" ref="baseDao"/>
 	</bean>
 </beans>
