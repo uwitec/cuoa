@@ -7,7 +7,7 @@
 	<package name="permissions" namespace="/permissions" extends="default">
 		<action name="employeeManage" class="com.oa.employee.permissions.actions.EmployeeManageAction">
 		    <result name="index">/jsp/employee/permissions/employee-manage-index.jsp</result>
-			<result name="modifyEmployeeIndex">/jsp/employee/permissions/modifyEmployeeIndex.jsp</result>
+			<result name="modifyEmployeeIndex">/jsp/employee/permissions/employee-modify-index.jsp</result>
 			<result name="jsonSuccess" type="json">
 		    	<param name="root">result</param>
 		    </result>
@@ -17,11 +17,10 @@
 		</action>
 		
 		<action name="permissionManage" class="com.oa.employee.permissions.actions.PermissionManageAction">
-			<result name="roleIndex">/jsp/employee/permissions/roleIndex.jsp</result>
-			<result name="rolePage">/jsp/employee/permissions/rolePage.jsp</result>
+			<result name="roleIndex">/jsp/employee/permissions/role-manage-index.jsp</result>
 			<result name="addRoleIndex">/jsp/employee/permissions/addRoleIndex.jsp</result>
 			<result name="modifyRoleIndex">/jsp/employee/permissions/modifyRoleIndex.jsp</result>
-			<result name="resourceTree">/jsp/employee/permissions/resourceTree.jsp</result>
+			<result name="resourceTree">/jsp/employee/permissions/resource-tree.jsp</result>
 			<result name="jsonSuccess" type="json">
 		    	<param name="root">result</param>
 		    </result>

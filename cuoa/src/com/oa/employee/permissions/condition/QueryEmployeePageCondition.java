@@ -16,14 +16,15 @@ public class QueryEmployeePageCondition extends Condition {
 	@Override
 	public String getInitialHql() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("select employee.loginName as loginName, ");
+		builder.append("select new map(employee.id as id, ");
+		builder.append("employee.loginName as loginName, ");
 		builder.append("employee.name as name, ");
 		builder.append("employee.serial as serial, ");
 		builder.append("role.name as roleName, ");
 		builder.append("creater.name as createrName, ");
 		builder.append("DATE_FORMAT(employee.createrDate, '%Y-%m-%d') as createrDate,");
 		builder.append("modifier.name as modifierName, ");
-		builder.append("employee.modifyDate as modifyDate ");
+		builder.append("employee.modifyDate as modifyDate) ");
 		
 		builder.append("from Employee employee ");
 		builder.append("left join employee.creater creater ");

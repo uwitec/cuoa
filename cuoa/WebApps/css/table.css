@@ -1,0 +1,81 @@
+BODY {
+	MARGIN: 0px;
+	FONT-SIZE: 12px;
+}
+.tab_main {
+	width: 100%;
+}
+.td_2 {
+	height: 30px;
+	background-image: url(../images/main/tab_05.gif);
+}
+
+.td_3 {
+	width: 8px;
+	background-image: url(../images/main/tab_12.gif);
+}
+.td_4 {
+	width: 8px;
+	background-image: url(../images/main/tab_15.gif);
+}
+
+.tb_1 {
+	width: 100%;
+	background-color: #b5d6e6;
+}
+
+.td_page {
+	height: 35px;
+	background-image: url(../images/main/tab_19.gif);
+}
+
+.tb_1 thead tr td {
+	height: 22px;
+	background-color: #FFFFFF;
+	background-image: url(../images/main/bg.gif);
+	text-align: center;
+}
+
+.tb_1 tbody tr td {
+	height: 20px;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+.STYLE1 {
+	FONT-SIZE: 12px;
+	height: 30px;
+}
+.STYLE3 {
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: bold
+}
+
+.operate_span {
+	COLOR: #03515d;
+	FONT-SIZE: 12px
+}
+
+.page{
+	margin:2px auto;
+	width:97%;
+	height:25px;
+	font-size:12px;
+	line-height:25px;
+	color:#073259;
+	min-width:620px;
+}
+
+.page a{
+	display:compact;
+	border:#7a9ec9 solid 1px;
+	padding:2px 5px;
+	_padding:0px 5px;
+	color:#0066cc;
+	text-decoration: none;
+	
+}
+.page form  a:hover{
+	background-color:#3a91c6; color:#ffffff;
+	cursor:hand;
+	text-decoration:underline;
+}
