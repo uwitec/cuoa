@@ -3,7 +3,7 @@
 -- Server version:               5.5.27 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2012-10-27 18:06:10
+-- Date/time:                    2013-03-26 14:07:31
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,8 +33,7 @@ CREATE TABLE IF NOT EXISTS `tb_employee` (
   PRIMARY KEY (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='员工基本信息表';
 
--- Dumping data for table oa.tb_employee: ~2 rows (approximately)
-DELETE FROM `tb_employee`;
+-- Dumping data for table oa.tb_employee: ~4 rows (approximately)
 /*!40000 ALTER TABLE `tb_employee` DISABLE KEYS */;
 INSERT INTO `tb_employee` (`emp_id`, `emp_login_name`, `emp_name`, `emp_login_password`, `emp_serial`, `emp_creater_id`, `emp_modifier_id`, `emp_create_date`, `emp_modify_date`, `emp_is_deleted`, `emp_role_id`) VALUES
 	('0', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '00001', '0', '0', '2011-08-23 08:40:10', '2011-08-23 08:40:12', 0, '0'),
@@ -57,24 +56,23 @@ CREATE TABLE IF NOT EXISTS `tb_resource` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限资源表(包含需要拦截的操作和树状菜单节点)';
 
 -- Dumping data for table oa.tb_resource: ~15 rows (approximately)
-DELETE FROM `tb_resource`;
 /*!40000 ALTER TABLE `tb_resource` DISABLE KEYS */;
 INSERT INTO `tb_resource` (`re_id`, `re_name`, `re_parent_id`, `re_url`, `re_is_menu`, `re_is_deleted`) VALUES
-	('001', '办公系统', '-1', NULL, 1, 0),
+	('001', '功能列表', '', NULL, 1, 0),
 	('001001', '权限管理', '001', NULL, 1, 0),
-	('001001001', '员工管理', '001001', '/permissions/employeeManage!toIndex.action', 1, 0),
-	('001001001001', '查询员工', '001001001', '/permissions/employeeManage!queryEmployeePage.action', 0, 0),
-	('001001001002', '新增员工', '001001001', '/permissions/employeeManage!toAddEmployeeIndex.action', 0, 0),
-	('001001001003', '删除员工', '001001001', '/permissions/employeeManage!deleteEmployees.action', 0, 0),
-	('001001001004', '修改员工', '001001001', '/permissions/employeeManage!toModifyEmployeeIndex.action', 0, 0),
-	('001001002', '角色管理', '001001', '/permissions/permissionManage!toRoleIndex.action', 1, 0),
-	('001001002001', '查询角色', '001001002', '/permissions/permissionManage!toRoleIndex.action', 0, 0),
-	('001001002002', '新增角色', '001001002', '/permissions/permissionManage!toAddRoleIndex.action', 0, 0),
-	('001001002003', '删除角色', '001001002', '/permissions/permissionManage!deleteRoles.action', 0, 0),
-	('001001002004', '修改角色', '001001002', '/permissions/permissionManage!toModifyRoleIndex.action', 0, 0),
+	('001001001', '员工管理', '001001', 'permissions/employeeManage!toIndex.action', 1, 0),
+	('001001001001', '查询员工', '001001001', 'permissions/employeeManage!queryEmployeePage.action', 0, 0),
+	('001001001002', '新增员工', '001001001', 'permissions/employeeManage!toAddEmployeeIndex.action', 0, 0),
+	('001001001003', '删除员工', '001001001', 'permissions/employeeManage!deleteEmployees.action', 0, 0),
+	('001001001004', '修改员工', '001001001', 'permissions/employeeManage!toModifyEmployeeIndex.action', 0, 0),
+	('001001002', '角色管理', '001001', 'permissions/permissionManage!toRoleIndex.action', 1, 0),
+	('001001002001', '查询角色', '001001002', 'permissions/permissionManage!toRoleIndex.action', 0, 0),
+	('001001002002', '新增角色', '001001002', 'permissions/permissionManage!toAddRoleIndex.action', 0, 0),
+	('001001002003', '删除角色', '001001002', 'permissions/permissionManage!deleteRoles.action', 0, 0),
+	('001001002004', '修改角色', '001001002', 'permissions/permissionManage!toModifyRoleIndex.action', 0, 0),
 	('001002', '工作日志', '001', NULL, 1, 0),
-	('001002001', '日志列表', '001002', '/worklog/worklogManage!toIndex.action', 1, 0),
-	('001002001001', '日志查询', '001002001', '/worklog/worklogManage!queryWorklogPage.action', 0, 0);
+	('001002001', '日志列表', '001002', 'worklog/worklogManage!toIndex.action', 1, 0),
+	('001002001001', '日志查询', '001002001', 'worklog/worklogManage!queryWorklogPage.action', 0, 0);
 /*!40000 ALTER TABLE `tb_resource` ENABLE KEYS */;
 
 
@@ -92,7 +90,6 @@ CREATE TABLE IF NOT EXISTS `tb_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- Dumping data for table oa.tb_role: ~6 rows (approximately)
-DELETE FROM `tb_role`;
 /*!40000 ALTER TABLE `tb_role` DISABLE KEYS */;
 INSERT INTO `tb_role` (`rl_id`, `rl_name`, `rl_deleted`, `rl_creater_id`, `rl_create_date`, `rl_modifier_id`, `rl_modify_date`) VALUES
 	('0', '超级管理员', 0, '0', '2011-08-31 12:17:34', NULL, NULL),
@@ -113,21 +110,20 @@ CREATE TABLE IF NOT EXISTS `tb_role_resource` (
   PRIMARY KEY (`rr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色－权限资源 关系表';
 
--- Dumping data for table oa.tb_role_resource: ~8 rows (approximately)
-DELETE FROM `tb_role_resource`;
+-- Dumping data for table oa.tb_role_resource: ~13 rows (approximately)
 /*!40000 ALTER TABLE `tb_role_resource` DISABLE KEYS */;
 INSERT INTO `tb_role_resource` (`rr_id`, `rr_role_id`, `rr_resource_id`) VALUES
-	('2131241243123', '402888b5320505970132050e31530001', '001001001'),
-	('233465325645', '402888b5320505970132050e31530001', '001001001003'),
-	('234234', '402888b5320505970132050e31530001', '-1'),
-	('23424234', '402888b5320505970132050e31530001', '001'),
-	('23443223', '402888b5320505970132050e31530001', '001001'),
-	('23534253243545', '402888b5320505970132050e31530001', '001001001004'),
-	('242423411345', '402888b5320505970132050e31530001', '001001001002'),
-	('453543534543', '402888b5320505970132050e31530001', '001001001001'),
+	('064da47587cc454696f7630f73ab660c', '402888b5320505970132050e31530001', '001001001001'),
+	('0da6596c41f54aa580f17d16765e7f2c', '402888b5320505970132050e31530001', '001001001003'),
+	('2d800fa5c44b4bb7b8cd2d73f21e5333', '402888b5320505970132050e31530001', '001001001'),
 	('4654fdb1e69a43a8abed15c849a3ef68', '402888b5320505970132050f963b0002', '001'),
+	('4b85315e1a4f4fc0adc28cef0b2e98eb', '402888b5320505970132050e31530001', '001001001004'),
+	('55a5b084838d4cc69f1a9664d6017a7b', '402888b5320505970132050e31530001', '001001'),
+	('654d60bfe6584922a9680e0e8656aec5', '402888b5320505970132050e31530001', '001'),
+	('7f7c658b6a754f308db3e9c711d104c9', '402888b5320505970132050e31530001', '001001001002'),
 	('94dbe403706b4532b9b5900f26c92c62', '402888b5320505970132050f963b0002', '001002001'),
 	('9b9e84e605104a5eb596e426ada82d11', '402888b5320505970132050f963b0002', '-1'),
+	('a431c395a6f8403bb9b18f416483d73c', '402888b5320505970132050e31530001', '-1'),
 	('cfc8d5e933624926a57c57d261eb27ab', '402888b5320505970132050f963b0002', '001002'),
 	('edb9a37f91e8462abe2f4a1c0d853bee', '402888b5320505970132050f963b0002', '001002001001');
 /*!40000 ALTER TABLE `tb_role_resource` ENABLE KEYS */;
@@ -150,7 +146,6 @@ CREATE TABLE IF NOT EXISTS `tb_worklog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='员工工作日志';
 
 -- Dumping data for table oa.tb_worklog: ~1 rows (approximately)
-DELETE FROM `tb_worklog`;
 /*!40000 ALTER TABLE `tb_worklog` DISABLE KEYS */;
 INSERT INTO `tb_worklog` (`wl_id`, `wl_employee_id`, `wl_caption`, `wl_log_date`, `wl_log_content`, `wl_is_deleted`, `wl_creater_id`, `wl_create_date`, `wl_modifier_id`, `wl_modify_date`) VALUES
 	('123123', '0', '系统管理员工作日志12312', '2011-08-25', '犬瘟热庆武确认qwerTY谔谔人儿王企鹅完全人我去', 0, '0', '2011-08-26 15:14:50', '0', '2011-08-27 15:14:50');
