@@ -22,18 +22,17 @@ var contextPath = "<%=contextPath %>";
 <script src="<%=contextPath %>/ligerui/ligerUI/js/ligerui.all.js" type="text/javascript"></script>
 <script src="<%=contextPath %>/js/jquery.uploadify.v2.1.4.js" type="text/javascript"></script>
 <script src="<%=contextPath %>/js/swfobject.js" type="text/javascript"></script>
-<script src="<%=contextPath %>/js/linkage-menu.js" type="text/javascript"></script>
 <script src="<%=contextPath %>/js/my97/WdatePicker.js" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function(){
-	loadBasicLinkage();
-	loadLocationLinkage();
+//	loadBasicLinkage();
+//	loadLocationLinkage();
 });
 
 //]]>
 </script>
-<script src="<%=contextPath %>/js/attend.js" type="text/javascript"></script>
+<script src="<%=contextPath %>/js/cuoa.js" type="text/javascript"></script>
 <script src="<%=contextPath %>/js/jquery-extends.js" type="text/javascript"></script>
 
 <link href="<%=contextPath %>/js/jquery/jquery.alerts-1.1/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />

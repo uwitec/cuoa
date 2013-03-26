@@ -6,8 +6,7 @@
 	<!-- 权限管理 -->
 	<package name="permissions" namespace="/permissions" extends="default">
 		<action name="employeeManage" class="com.oa.employee.permissions.actions.EmployeeManageAction">
-		    <result name="index">/jsp/employee/permissions/employeeManageIndex.jsp</result>
-			<result name="employeePage">/jsp/employee/permissions/employeeManageList.jsp</result>
+		    <result name="index">/jsp/employee/permissions/employee-manage-index.jsp</result>
 			<result name="modifyEmployeeIndex">/jsp/employee/permissions/modifyEmployeeIndex.jsp</result>
 			<result name="jsonSuccess" type="json">
 		    	<param name="root">result</param>
