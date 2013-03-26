@@ -69,13 +69,13 @@ public class PermissionManageAction extends AbstractAction {
 			String returnMessage = permissionManageService.addRole(role, employee);
 			if (StringUtils.isBlank(returnMessage)) {
 				result = new Result(Boolean.TRUE, "新增角色成功");
-				return "jsonSuccess";
+				return "json-result";
 			}
 			result = new Result(Boolean.FALSE, returnMessage);
-			return "jsonError";
+			return "json-result";
 		} catch (Exception ex) {
 			result = new Result(Boolean.FALSE, ex.getMessage());
-			return "jsonError";
+			return "json-result";
 		}
 	}
 	
@@ -110,13 +110,13 @@ public class PermissionManageAction extends AbstractAction {
 			String returnMessage = permissionManageService.modifyRole(role, employee);
 			if (StringUtils.isBlank(returnMessage)) {
 				result = new Result(Boolean.TRUE, "修改角色成功");
-				return "jsonSuccess";
+				return "json-result";
 			}
 			result = new Result(Boolean.FALSE, returnMessage);
-			return "jsonError";
+			return "json-result";
 		} catch (Exception ex) {
 			result = new Result(Boolean.FALSE, ex.getMessage());
-			return "jsonError";
+			return "json-result";
 		}
 	}
 	
@@ -144,14 +144,14 @@ public class PermissionManageAction extends AbstractAction {
 		try {
 			String returnMessage = permissionManageService.modifyPermissions(role, modifyPermissionsCondition);
 			if (StringUtils.isBlank(returnMessage)) {
-				result = new Result(Boolean.TRUE, "修改权限成功", "");
-				return "jsonSuccess";
+				result = new Result(Boolean.TRUE, "修改权限成功");
+				return "json-result";
 			}
-			result = new Result(Boolean.FALSE, returnMessage, "");
-			return "jsonError";
+			result = new Result(Boolean.FALSE, returnMessage);
+			return "json-result";
 		} catch (Exception ex) {
-			result = new Result(Boolean.FALSE, ex.getMessage(), "");
-			return "jsonError";
+			result = new Result(Boolean.FALSE, ex.getMessage());
+			return "json-result";
 		}
 	}
 

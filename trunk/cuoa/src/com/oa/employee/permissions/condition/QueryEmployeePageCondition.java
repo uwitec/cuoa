@@ -24,7 +24,7 @@ public class QueryEmployeePageCondition extends Condition {
 		builder.append("creater.name as createrName, ");
 		builder.append("DATE_FORMAT(employee.createrDate, '%Y-%m-%d') as createrDate,");
 		builder.append("modifier.name as modifierName, ");
-		builder.append("employee.modifyDate as modifyDate) ");
+		builder.append("DATE_FORMAT(employee.modifyDate, '%Y-%m-%d') as modifyDate) ");
 		
 		builder.append("from Employee employee ");
 		builder.append("left join employee.creater creater ");

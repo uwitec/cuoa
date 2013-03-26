@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>学而思教育－教师考勤系统</title>
+    <title>办公自动化</title>
     <link href="<%=path%>/ligerui/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
     <script src="<%=path%>/ligerui/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>    
     <script src="<%=path%>/ligerui/ligerUI/js/ligerui.min.js" type="text/javascript"></script> 

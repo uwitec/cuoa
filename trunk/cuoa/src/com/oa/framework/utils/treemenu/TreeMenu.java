@@ -37,7 +37,7 @@ public class TreeMenu {
         Set entrySet = nodeList.entrySet();
         for (Iterator it = entrySet.iterator(); it.hasNext();) {
             Node node = (Node) ((Map.Entry) it.next()).getValue();
-            if (node.parentId == null || node.parentId.equals("")) {
+            if (node.parentId == null || node.parentId.equals("") || node.parentId.equals("-1")) { //如果父节点为-1,则此节点为顶级节点
                 root = node;
             } else {
                 ((Node) nodeList.get(node.parentId)).addChild(node);

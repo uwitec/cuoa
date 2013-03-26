@@ -35,6 +35,7 @@
 							render: function(item){
 				    		   var html = "";
 				    		   if (item.id != "0") {
+				    			   html = html + "<a href='javascript:modifyRole(\"" + item.id + "\")' class='linkbutton'>编辑</a>";
 				    			   html = html + "<a href='javascript:modifyRolePermission(\"" + item.id + "\")' class='linkbutton'>权限设置</a>";
 				    		   }
 				    		   return html;
@@ -49,16 +50,24 @@
 	}
 	
 	var modifyRole = function(roleId) {
-		returnMessage = openModalDialog("permissionManage!toModifyRoleIndex.action?role.id=" + roleId, window, 118, 382, 400, 160, "no");
-		if (returnMessage) {
-			if (returnMessage.jumpType) {
-				dialog("提示", "text:" + returnMessage.returnMessage, 300, "auto", "", "window.parent.window.condition_form.submit();");
-				return;
-			} else {
-				dialog("提示", "text:" + returnMessage.returnMessage, 300, "auto", "");
-			}
-		}
-		return;
+		dialog = $.ligerDialog.open({ 
+	    	url: contextPath + "/permissions/permissionManage!toModifyRoleIndex.action?role.id=" + roleId,
+	    	width: 360,
+	    	height: 160,
+	    	title: "编辑角色信息",
+	    	buttons : [ {
+				text : "确定",
+				onclick : function(item, dialog) {
+				if(typeof dialog.frame.f_submit != 'undefined')
+					dialog.frame.f_submit();
+				}
+			}, {
+				text : "取消",
+				onclick : function(item, dialog) {
+					dialog.close();
+				}
+			} ]
+	    });
 	};
 
 	var modifyRolePermission = function(roleId) {
@@ -70,8 +79,8 @@
 	    	buttons : [ {
 				text : "确定",
 				onclick : function(item, dialog) {
-				if(typeof dialog.frame.f_submit != 'undefined')
-					dialog.frame.f_submit();
+				if(typeof dialog.frame.modifyPermission != 'undefined')
+					dialog.frame.modifyPermission();
 				}
 			}, {
 				text : "取消",

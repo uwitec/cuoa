@@ -3,7 +3,7 @@
 -- Server version:               5.5.27 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2013-03-26 14:07:31
+-- Date/time:                    2013-03-26 17:09:02
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `tb_resource` (
 -- Dumping data for table oa.tb_resource: ~15 rows (approximately)
 /*!40000 ALTER TABLE `tb_resource` DISABLE KEYS */;
 INSERT INTO `tb_resource` (`re_id`, `re_name`, `re_parent_id`, `re_url`, `re_is_menu`, `re_is_deleted`) VALUES
-	('001', '功能列表', '', NULL, 1, 0),
+	('001', '功能列表', '-1', NULL, 1, 0),
 	('001001', '权限管理', '001', NULL, 1, 0),
 	('001001001', '员工管理', '001001', 'permissions/employeeManage!toIndex.action', 1, 0),
 	('001001001001', '查询员工', '001001001', 'permissions/employeeManage!queryEmployeePage.action', 0, 0),
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `tb_role` (
   `rl_name` varchar(100) NOT NULL COMMENT '角色名',
   `rl_deleted` int(10) NOT NULL COMMENT '是否删除',
   `rl_creater_id` varchar(32) NOT NULL COMMENT '创建人',
-  `rl_create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `rl_create_date` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `rl_modifier_id` varchar(32) DEFAULT NULL COMMENT '最后修改人ID',
   `rl_modify_date` timestamp NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`rl_id`)
@@ -97,7 +97,7 @@ INSERT INTO `tb_role` (`rl_id`, `rl_name`, `rl_deleted`, `rl_creater_id`, `rl_cr
 	('402888b5320505970132050f963b0002', '销售人员', 0, '0', '2011-08-26 15:48:20', '0', '2011-08-26 15:48:20'),
 	('402888b53205059701320511bc020003', '销售部主管', 0, '0', '2011-08-26 15:50:40', '0', '2011-08-26 15:50:40'),
 	('402888b5320505970132051205690004', '市场部经理', 0, '0', '2011-08-26 15:50:59', '0', '2011-08-26 15:50:59'),
-	('402888b53205059701320513937e0005', '财务总监', 0, '0', '2011-08-26 15:52:41', '0', '2011-08-26 15:52:41');
+	('402888b53205059701320513937e0005', '财务总监123456', 0, '0', '2013-03-26 17:02:38', '0', '2013-03-26 17:07:57');
 /*!40000 ALTER TABLE `tb_role` ENABLE KEYS */;
 
 
@@ -110,22 +110,32 @@ CREATE TABLE IF NOT EXISTS `tb_role_resource` (
   PRIMARY KEY (`rr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色－权限资源 关系表';
 
--- Dumping data for table oa.tb_role_resource: ~13 rows (approximately)
+-- Dumping data for table oa.tb_role_resource: ~23 rows (approximately)
 /*!40000 ALTER TABLE `tb_role_resource` DISABLE KEYS */;
 INSERT INTO `tb_role_resource` (`rr_id`, `rr_role_id`, `rr_resource_id`) VALUES
+	('0524de6af13c441a8f51719776cb8f5e', '402888b53205059701320513937e0005', '001001001002'),
 	('064da47587cc454696f7630f73ab660c', '402888b5320505970132050e31530001', '001001001001'),
 	('0da6596c41f54aa580f17d16765e7f2c', '402888b5320505970132050e31530001', '001001001003'),
+	('25b49749831d4cf49a865a950693d3d5', '402888b53205059701320513937e0005', '001001'),
 	('2d800fa5c44b4bb7b8cd2d73f21e5333', '402888b5320505970132050e31530001', '001001001'),
+	('338d174275ed410dab01bd9868b73361', '402888b53205059701320513937e0005', '001001001004'),
 	('4654fdb1e69a43a8abed15c849a3ef68', '402888b5320505970132050f963b0002', '001'),
 	('4b85315e1a4f4fc0adc28cef0b2e98eb', '402888b5320505970132050e31530001', '001001001004'),
 	('55a5b084838d4cc69f1a9664d6017a7b', '402888b5320505970132050e31530001', '001001'),
+	('5f975838cf774ec58f603eb084186894', '402888b53205059701320513937e0005', '001001001'),
 	('654d60bfe6584922a9680e0e8656aec5', '402888b5320505970132050e31530001', '001'),
+	('73a1213c26ad40ec95ece5488192afde', '402888b53205059701320513937e0005', '001'),
+	('7823fc2f3d834daea6af8cd8fb74f3ec', '402888b53205059701320513937e0005', '001001002'),
 	('7f7c658b6a754f308db3e9c711d104c9', '402888b5320505970132050e31530001', '001001001002'),
 	('94dbe403706b4532b9b5900f26c92c62', '402888b5320505970132050f963b0002', '001002001'),
 	('9b9e84e605104a5eb596e426ada82d11', '402888b5320505970132050f963b0002', '-1'),
 	('a431c395a6f8403bb9b18f416483d73c', '402888b5320505970132050e31530001', '-1'),
+	('b095a447a2ac4beeb5d852661a2578bf', '402888b53205059701320513937e0005', '001001001001'),
+	('b3bd46a2787d4fbaaad70e119272c263', '402888b53205059701320513937e0005', '001001001003'),
 	('cfc8d5e933624926a57c57d261eb27ab', '402888b5320505970132050f963b0002', '001002'),
-	('edb9a37f91e8462abe2f4a1c0d853bee', '402888b5320505970132050f963b0002', '001002001001');
+	('da045124fff8419b9067176e1cde0e94', '402888b53205059701320513937e0005', '-1'),
+	('edb9a37f91e8462abe2f4a1c0d853bee', '402888b5320505970132050f963b0002', '001002001001'),
+	('ee1f4e2e044145c98a2c92e0937ac46c', '402888b53205059701320513937e0005', '001001002002');
 /*!40000 ALTER TABLE `tb_role_resource` ENABLE KEYS */;
 
 
