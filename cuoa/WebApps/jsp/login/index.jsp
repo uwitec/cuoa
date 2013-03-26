@@ -107,9 +107,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     .l-link-over{ background:#FFEEAC; border:1px solid #DB9F00;} 
     .l-winbar{ background:#2B5A76; height:30px; position:absolute; left:0px; bottom:0px; width:100%; z-index:99999;}
     .space{ color:#E7E7E7;}
-    /* 顶部 */ 
+/**
 	.l-topmenu{ margin:0; padding:0; height:24px; line-height:24px; background:#1B3160 url('<%=path%>/images/top.jpg') repeat-x bottom;  position:relative; border-top:1px solid #7C96AF; border-bottom:2px solid #4E7194;}
-	.l-topmenu-logo{ color:#070A0C;  padding-left:130px; background:url('<%=path%>/images/topicon.png') no-repeat 10px 4px;}
+*/	
+	.l-topmenu{ margin:0; padding:0; height:24px; line-height:24px; background-color:#FFFFFF;  position:relative; border-top:1px solid #7C96AF; border-bottom:0px solid #4E7194;}
+	.l-topmenu-logo{ color:#070A0C;  padding-left:130px; background:url('<%=path%>/images/topicon.png');background-repeat: no-repeat; background-position: -10px 0px;}
 	.l-topmenu-welcome{  position:absolute; height:24px; right:30px; top:0px;color:#070A0C;}
 	.l-topmenu-welcome a{ color:#070A0C; text-decoration:underline}
 	.l-topmenu-username{ color:#070A0C; font-weight:bold;}     
