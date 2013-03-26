@@ -35,13 +35,13 @@ public class PermissionManageAction extends AbstractAction {
 	* @version 2011-8-26 12:26:42
 	* @tag 查询角色列表
 	 */
-	public String queryRolePage() {
+	public String data() {
 		if (condition == null) {
 			condition = new QueryRolePageCondition();
 		}
 		try {
 			page = permissionManageService.queryRolePage(condition);
-			return "rolePage";
+			return "json-page";
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ERROR;

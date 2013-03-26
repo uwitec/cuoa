@@ -26,15 +26,15 @@
 			checkbox : true,
 			rownumbers:false,
 			columns : [
-						{display : '员工登录名', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '员工姓名', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '编号', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '权限角色', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '创建人', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '创建时间', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '修改人', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '修改时间', minWidth:60,  name : 'verifyYearMonth',isSort:false}, 
-						{display : '操作', minWidth:60,  name : 'verifyYearMonth',isSort:false}
+						{display : '员工登录名', minWidth:60,  name : 'loginName',isSort:false}, 
+						{display : '员工姓名', minWidth:60,  name : 'name',isSort:false}, 
+						{display : '编号', minWidth:60,  name : 'serial',isSort:false}, 
+						{display : '权限角色', minWidth:60,  name : 'roleName',isSort:false}, 
+						{display : '创建人', minWidth:60,  name : 'createrName',isSort:false}, 
+						{display : '创建时间', minWidth:60,  name : 'createrDate',isSort:false}, 
+						{display : '修改人', minWidth:60,  name : 'modifierName',isSort:false}, 
+						{display : '修改时间', minWidth:60,  name : 'modifyDate',isSort:false}, 
+						{display : '操作', minWidth:60,  name : '',isSort:false}
 					  ]
 		};
 		grid = showGrid(g);
@@ -60,9 +60,6 @@
 						</label>
 						<input type="text" name="condition.name" id="name" class="input-text" />
 					</li>
-				</ul>
-				<ul>
-					
 					<li>
 						<input type="button" id="queryButton" value="查询" class="l-button" onclick="f_search()"/>
 						<input type="reset" id="resetButton" value="重置" class="l-button" />

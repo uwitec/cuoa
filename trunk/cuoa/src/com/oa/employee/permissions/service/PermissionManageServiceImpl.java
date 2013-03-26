@@ -3,6 +3,8 @@ package com.oa.employee.permissions.service;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.xwork.StringUtils;
+
 import com.oa.employee.permissions.condition.ModifyPermissionsCondition;
 import com.oa.employee.permissions.condition.QueryAllPermissionResourcesCondition;
 import com.oa.employee.permissions.condition.QueryResourcesOfCurrentRoleCondition;
@@ -69,7 +71,7 @@ public class PermissionManageServiceImpl implements IPermissionManageService {
 		StringBuilder builder = new StringBuilder();
 		for (Resource resource: allResource) {
 			builder.append("data['");
-			builder.append(resource.getParentId());
+			builder.append(StringUtils.isBlank(resource.getParentId()) ? "-1" : resource.getParentId());
 			builder.append("_");
 			builder.append(resource.getId());
 			builder.append("']");
