@@ -111,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	.l-topmenu{ margin:0; padding:0; height:24px; line-height:24px; background:#1B3160 url('<%=path%>/images/top.jpg') repeat-x bottom;  position:relative; border-top:1px solid #7C96AF; border-bottom:2px solid #4E7194;}
 */	
 	.l-topmenu{ margin:0; padding:0; height:24px; line-height:24px; background-color:#FFFFFF;  position:relative; border-top:1px solid #7C96AF; border-bottom:0px solid #4E7194;}
-	.l-topmenu-logo{ color:#070A0C;  padding-left:130px; background:url('<%=path%>/images/topicon.png');background-repeat: no-repeat; background-position: -10px 0px;}
+	.l-topmenu-logo{ color:#4D789B; font-family:微软雅黑; font-style:italic; font-size:14px; font-weight:bold; padding-left:90px; background:url('<%=path%>/images/topicon.png');background-repeat: no-repeat; background-position: 2px 1px;}
 	.l-topmenu-welcome{  position:absolute; height:24px; right:30px; top:0px;color:#070A0C;}
 	.l-topmenu-welcome a{ color:#070A0C; text-decoration:underline}
 	.l-topmenu-username{ color:#070A0C; font-weight:bold;}     
@@ -121,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body style="padding:0px;background:#EAEEF5;">  
 <div id="pageloading"></div>  
 <div id="topmenu" class="l-topmenu">
-    <div class="l-topmenu-logo">教师考勤系统 </div>
+    <div class="l-topmenu-logo">企业通用OA</div>
     <div class="l-topmenu-welcome">
     	<span class="l-topmenu-username"> 欢迎 &nbsp <s:property value="#session.userInfo.name"/> 登录学而思教师考勤系统！ &nbsp;
 
