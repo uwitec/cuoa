@@ -34,7 +34,7 @@ public class EmployeeManageAction extends AbstractAction {
 			condition = new QueryEmployeePageCondition();
 		}
 		page = employeeManageService.queryEmployeePage(condition);
-		return "employeePage";
+		return "json-page";
 	}
 
 	/**
