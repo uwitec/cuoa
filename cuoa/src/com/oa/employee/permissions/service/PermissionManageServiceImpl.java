@@ -32,9 +32,7 @@ public class PermissionManageServiceImpl implements IPermissionManageService {
 		}
 		Date date = new Date();
 		role.setCreateDate(date);
-		role.setModifyDate(date);
 		role.setCreaterId(employee.getId());
-		role.setModifierId(employee.getId());
 		role.setDeleted(0);
 		dao.addObject(role);
 		return null;
@@ -50,7 +48,8 @@ public class PermissionManageServiceImpl implements IPermissionManageService {
 			return "您输入的角色名已存在，请重新输入";
 		}
 		originalRole.setModifierId(employee.getId());
-		originalRole.setModifyDate(new Date());
+		Date date = new Date();
+		originalRole.setModifyDate(date);
 		originalRole.setName(role.getName());
 		dao.updateObject(originalRole);
 		return null;
@@ -71,7 +70,7 @@ public class PermissionManageServiceImpl implements IPermissionManageService {
 		StringBuilder builder = new StringBuilder();
 		for (Resource resource: allResource) {
 			builder.append("data['");
-			builder.append(StringUtils.isBlank(resource.getParentId()) ? "-1" : resource.getParentId());
+			builder.append(resource.getParentId());
 			builder.append("_");
 			builder.append(resource.getId());
 			builder.append("']");

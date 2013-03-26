@@ -12,7 +12,7 @@
 		</STYLE>
 		<script type="text/javascript">
 			var modifyPermission = function() {
-				var url = "permissionManage!modifyPermission.action";
+				var url = contextPath + "/permissions/permissionManage!modifyPermission.action";
 				var resourceIds = "";
 		        for(var i in a.nodes) { 
 					if(a.nodes[i].checked){
@@ -20,17 +20,20 @@
 					} 
 				}
 				$("#submitBtn").attr("disabled", true);
-		        $.post(url, {"role.id": "<s:property value='role.id'/>",
-       					"modifyPermissionsCondition.resourceIds": resourceIds,
-       					"random": Math.random()}, function(json) { 
-       			   $("#submitBtn").attr("disabled", false);
-		           if(!json.jumpType) {
-		           		dialog("提示", "text:" + json.returnMessage, 300, "auto");
-		           		return;
-		           }
-				   window.returnValue = {"jumpType": true, "returnMessage": json.returnMessage};
-				   window.close();
-		        }, 'json');
+		        
+		        $.post(url, {"role.id": "<s:property value='role.id'/>", "modifyPermissionsCondition.resourceIds": resourceIds, "random": Math.random()}, 
+	        		function(json) {
+						if(json.success){
+							$("#submitBtn").attr("disabled", false);
+							alert(json.message,"success");
+						  	home_fresh();
+						  	closeWindow();
+						}else{
+							alert(json.message,"error");
+						}
+					}, 'json');
+		        
+		        
 			};
 		</script>
 	</HEAD>
@@ -87,9 +90,9 @@
 									</TR>
 									<TR>
 										<TD>
-											<SPAN class="operate_span">
+										<!-- <SPAN class="operate_span">
 											<INPUT type="button" id="submitBtn" class="btn" value="提 交" onclick="modifyPermission()"/>&nbsp;&nbsp;
-											<INPUT type="button" class="btn" value="关 闭" onclick="window.close()" /> </SPAN>
+											<INPUT type="button" class="btn" value="关 闭" onclick="window.close()" /> </SPAN> -->	
 										</TD>
 									</TR>
 								</form>
