@@ -7,12 +7,33 @@
 		<script type="text/javascript">
 		
 	var grid = null;
-	var toolbar = {items : [{ text: '导出', click: excel,icon:'outbox' }]};
+	var toolbar = {items : [{ text: '导出', click: excel,icon:'outbox' },
+	                        { text: '新增', click: add,icon:'add' }]};
 	
   	function excel(item) {
         exportData("/py-curriculum/curriculum-finance!exportFinance.action", [0,1]);
     }
   
+  	function add() {
+  		dialog = $.ligerDialog.open({ 
+	    	url: contextPath + "/permissions/permissionManage!toAddRoleIndex.action",
+	    	width: 360,
+	    	height: 160,
+	    	title: "编辑角色信息",
+	    	buttons : [ {
+				text : "确定",
+				onclick : function(item, dialog) {
+				if(typeof dialog.frame.f_submit != 'undefined')
+					dialog.frame.f_submit();
+				}
+			}, {
+				text : "取消",
+				onclick : function(item, dialog) {
+					dialog.close();
+				}
+			} ]
+	    });
+  	}
   
 	$(function() {
 		var g = {

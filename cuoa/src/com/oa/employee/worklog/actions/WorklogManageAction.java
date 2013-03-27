@@ -25,17 +25,12 @@ public class WorklogManageAction extends AbstractAction {
 		* @version 2011-8-27 下午02:36:46
 		* @tag 日志查询
 	 */
-	public String queryWorklogPage() {
+	public String data() {
 		if (condition == null) {
 			condition = new QueryWorklogPageCondition();
 		}
-		try {
-			page = worklogManageService.queryWorklogList(condition);
-			return "worklogPage";
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return ERROR;
-		}
+		page = worklogManageService.queryWorklogList(condition);
+		return "json-page";
 	}
 
 	public IWorklogManageService getWorklogManageService() {
