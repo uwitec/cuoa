@@ -12,7 +12,7 @@
 		
 		<action name="permissionManage" class="com.oa.employee.permissions.actions.PermissionManageAction">
 			<result name="roleIndex">/jsp/employee/permissions/role-manage-index.jsp</result>
-			<result name="addRoleIndex">/jsp/employee/permissions/addRoleIndex.jsp</result>
+			<result name="addRoleIndex">/jsp/employee/permissions/role-add.jsp</result>
 			<result name="modifyRoleIndex">/jsp/employee/permissions/role-edit.jsp</result>
 			<result name="resourceTree">/jsp/employee/permissions/resource-tree.jsp</result>
 		</action>
