@@ -15,6 +15,7 @@ var contextPath = "<%=contextPath %>";
 <link href="<%=contextPath %>/ligerui/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="<%=contextPath %>/ligerui/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
 <link href="<%=contextPath %>/css/cuoa.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="<%=contextPath %>/css/common.css" rel="stylesheet" type="text/css" media="screen" />
 <script src="<%=contextPath %>/ligerui/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
 <script src="<%=contextPath %>/ligerui/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
 <script src="<%=contextPath %>/ligerui/jquery-validation/jquery.metadata.js" type="text/javascript"></script>

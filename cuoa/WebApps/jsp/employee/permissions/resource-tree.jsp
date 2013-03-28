@@ -50,7 +50,6 @@
 									</TD>
 								</TR>
 							</THEAD>
-
 							<TBODY>
 								<form name="pop_form" id="pop_form">
 									<TR>

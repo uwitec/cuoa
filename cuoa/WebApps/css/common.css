@@ -1,0 +1,81 @@
+html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ol, dl, address{
+	font-family:"微软雅黑","Microsoft YaHei",Verdana,Arial,Helvetica,sans-serif;
+}
+.btn{ 
+	background-image:url(../images/common/btnBg.jpg); 
+	background-repeat:repeat-x; 
+	height:23px; 
+	line-height:23px;
+	border-bottom:#336699 solid 1px;
+	border-top:#336699 solid 1px;
+	border-left:#336699 solid 1px;
+	border-right:#336699 solid 1px; 
+	font-size:12px; 
+	color:#FFF; 
+	font-weight:bold; 
+	padding:0 5px;
+	cursor:pointer;
+	}
+.btn1{ 
+	background-image:url(../images/common/btnBg_1.jpg); 
+	background-repeat:repeat-x; 
+	height:23px; 
+	line-height:23px;
+	border-bottom:#662d90 solid 1px;
+	border-top:#662d90 solid 1px;
+	border-left:#662d90 solid 1px;
+	border-right:#662d90 solid 1px; 
+	font-size:12px; 
+	color:#FFF; 
+	font-weight:bold; 
+	padding:0 5px;
+	cursor:pointer;
+	}
+#td_condition {
+	line-height: 30px;
+	padding-left: 10px;
+}
+
+.input_80px {
+	width: 80px;
+}
+.pop_input {
+	line-height: 30px;
+	padding: 12px 12px;
+}
+.content { 
+	width:97%; 
+	border:#cccccc  solid 1px; 
+	margin:0 auto; 
+	text-align:left;
+	overflow:auto;/*标准浏览器中定义元素能够自适应高度*/
+	_display:inline-block;/*定义ie6以及更低版本中元素未内联块，强迫自动伸缩*/
+	padding:5px auto;
+	_padding-bottom:5px;
+	_padding-top:0px;
+	margin-bottom:10px;
+	_text-align:center;
+	background-color:#fff;
+}
+.tableTitleBg {background-repeat:repeat-x; font-size:14px; color:#333; font-weight:bold;}
+.pop_title {color:#3a3a4a; font-size:14px; font-weight:bold;}
+/* 左边菜单 */
+#nav_list{
+	width:175px;
+	_width:185px;
+	height:auto !important;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	z-index:101;
+	border-color:#fff;
+	border-style:solid;
+	border-width:0;
+	border-bottom-width:37px;
+	border-top-width:47px;
+	background-color:#FFF;
+	overflow:auto;
+	_text-align: left;
+}
