@@ -131,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div> 
 </div>
   <div id="layout1" style="width:99.2%; margin:0 auto; margin-top:4px; "> 
-        <div position="left"  title="培优教师考勤" id="accordion1"> 
+        <div position="left"  title="系统功能列表" id="accordion1"> 
         <!--<div title="培优教师考勤" class="l-scroll">
                  <ul id="tree_py" style="margin-top:3px;">
             </div> -->
